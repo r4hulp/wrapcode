@@ -12,8 +12,28 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
+import switchOnFx from "@/assets/switch-on.mp3"
+import switchOffFx from "@/assets/switch-off.mp3"
+import useSound from 'use-sound';
+
+
 export function ThemeToggle() {
-  const { setTheme } = useTheme()
+  const { theme, setTheme } = useTheme()
+
+  const [play] = useSound(switchOnFx);
+  const [playOff] = useSound(switchOffFx);
+
+  const setThemeWithSound = (selectedTheme: string) => {
+    console.log(theme);
+    console.log(selectedTheme);
+    if(selectedTheme === "dark"){
+      playOff();
+    } else {
+      play();
+    }
+
+    setTheme(selectedTheme);
+  }
 
   return (
     <DropdownMenu>
@@ -25,13 +45,13 @@ export function ThemeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
+        <DropdownMenuItem onClick={() => setThemeWithSound("light")}>
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
+        <DropdownMenuItem onClick={() => setThemeWithSound("dark")}>
           Dark
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
+        <DropdownMenuItem onClick={() => setThemeWithSound("system")}>
           System
         </DropdownMenuItem>
       </DropdownMenuContent>
