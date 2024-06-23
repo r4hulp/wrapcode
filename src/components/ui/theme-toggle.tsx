@@ -12,16 +12,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-import switchOnFx from "@/assets/switch-on.mp3"
-import switchOffFx from "@/assets/switch-off.mp3"
 import useSound from 'use-sound';
 
+const switchOn = "/resources/switch-on.mp3";
+const switchOff = "/resources/switch-off.mp3";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
 
-  const [play] = useSound(switchOnFx);
-  const [playOff] = useSound(switchOffFx);
+  const [play] = useSound(switchOn);
+  const [playOff] = useSound(switchOff);
 
   const setThemeWithSound = (selectedTheme: string) => {
     console.log(theme);
