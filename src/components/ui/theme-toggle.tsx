@@ -14,8 +14,8 @@ import {
 
 import useSound from 'use-sound';
 
-const switchOn = "/resources/switch-on.mp3";
-const switchOff = "/resources/switch-off.mp3";
+const switchOn = "/switch-on.mp3";
+const switchOff = "/switch-off.mp3";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
